@@ -1,0 +1,13 @@
+services:
+  lstk-tf:
+    image: localstack/localstack:4.4.0
+    container_name: lstk-tf
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=dynamodb,lambda,iam
+      - AWS_DEFAULT_REGION=us-east-1
+      - LOCALSTACK_AUTH_TOKEN=test
+    volumes:
+      - "${PWD}/src:/tmp/src"
+      - /var/run/docker.sock:/var/run/docker.sock
